@@ -1,4 +1,6 @@
+import breedData from "../data/breedData.js";
 import catData from "../data/catData.js";
+import uniqid from 'uniqid';
 
 const getAll = async (query = {}) => {
     let cats = await catData.getAll();
@@ -17,7 +19,21 @@ const getById = async (catId) => {
     return result;
 };
 
+const getBreed = async () => {
+    const breeds = await breedData.getAll();
+
+    return breeds;
+}
+
+const createBreed = (breed) => {
+    breed.id = uniqid();
+
+    return breedData.create(breed);
+}
+
 export default {
     getAll,
-    getById
+    getById,
+    getBreed,
+    createBreed
 };

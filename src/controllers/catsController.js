@@ -3,12 +3,22 @@ import catService from "../services/catService.js";
 
 const router = Router();
 
-router.get('/add-cat', (req, res) => {
-    res.render('cats/addCat');
+router.get('/add-cat', async (req, res) => {
+    const breeds = await catService.getBreed();
+
+    res.render('cats/addCat', { breeds });
 });
 
 router.get('/add-breed', (req, res) => {
     res.render('cats/addBreed');
+});
+
+router.post('/add-breed', async (req, res) => {
+    const breed = req.body;
+    
+    await catService.createBreed(breed);
+
+    res.redirect('/');
 });
 
 router.get('/:catId/editCat', async (req, res) => {
