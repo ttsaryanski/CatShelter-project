@@ -23,13 +23,16 @@
             <h1>Cat Shelter</h1>
             
             {{!-- Conditionally include the form partial --}}
-            {{#if showForm}}
-                {{> form }}
+            {{#if isHome}}
+                {{>form }}
             {{/if}}
             
         </header>
 
-        {{{body}}}
+        <main>
+            {{{body}}}
+        </main>
+
 
     </body>
 

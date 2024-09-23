@@ -1,0 +1,11 @@
+<section class="cats">
+    <ul>
+        {{#each cats}}
+            {{>cat}}
+        {{else}}
+        <div>
+            <h2>No cats to view him!</h2>
+        </div>
+        {{/each}}
+    </ul>
+</section>
