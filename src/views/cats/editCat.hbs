@@ -10,7 +10,9 @@
     <label for="group">Breed</label>
     <select id="group">
         <option value={{cat.breed}}>{{cat.breed}}</option>
-        <option value="Fluffy Cat">Fluffy Cat</option>
+        {{#each breeds}}
+            {{>breed}}
+        {{/each}}
     </select>
     <button>Edit Cat</button>
 </form>

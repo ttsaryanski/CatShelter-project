@@ -10,12 +10,24 @@ async function getDb() {
     return data;
 };
 
+function saveDb(data) {
+    return fs.writeFile(dbPath, JSON.stringify(data, {}, 2));
+};
+
 async function getAll() {
     const db = await getDb();
 
     return db.cats;
 };
 
+async function create(catData) {
+    const db = await getDb();
+    db.cats.push(catData);
+
+    return saveDb(db);
+};
+
 export default {
-    getAll
+    getAll,
+    create
 };
