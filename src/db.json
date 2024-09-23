@@ -13,7 +13,7 @@
       "imageUrl": "https://cdn.pixabay.com/photo/2015/06/19/14/20/cat-814952_1280.jpg",
       "name": "Cat2",
       "price": 200,
-      "breed": "Bombay Cat 2",
+      "breed": "Fluffy Cat",
       "description": "Cat2 is aggressive to other cats. Will probably eat you in your sleep. Very cute tho."
     },
     {
@@ -21,7 +21,7 @@
       "imageUrl": "https://cdn.pixabay.com/photo/2018/08/08/05/12/cat-3591348_1280.jpg",
       "name": "Cat3",
       "price": 300,
-      "breed": "Bombay Cat 3",
+      "breed": "Unknown breed",
       "description": "Cat3 is aggressive to other cats. Will probably eat you in your sleep. Very cute tho."
     },
     {
@@ -45,6 +45,10 @@
     {
       "breed": "Unknown breed",
       "id": "1g4iercm1f78q7b"
+    },
+    {
+      "breed": "Fluffy cat",
+      "id": "1g4ies0m1f7ublf"
     }
   ]
 }

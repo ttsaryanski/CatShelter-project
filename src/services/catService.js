@@ -6,7 +6,7 @@ const getAll = async (query = {}) => {
     let cats = await catData.getAll();
 
     if (query.search) {
-        cats = cats.filter(cat => cat.name.toLowerCase().includes(query.search.toLowerCase()));
+        cats = cats.filter(cat => cat.breed.toLowerCase().startsWith(query.search.toLowerCase()));
     };
 
     return cats;
