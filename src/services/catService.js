@@ -1,7 +1,11 @@
 import catData from "../data/catData.js";
 
-const getAll = async () => {
-    const cats = await catData.getAll();
+const getAll = async (query = {}) => {
+    let cats = await catData.getAll();
+
+    if (query.search) {
+        cats = cats.filter(cat => cat.name.toLowerCase().includes(query.search.toLowerCase()));
+    };
 
     return cats;
 };
