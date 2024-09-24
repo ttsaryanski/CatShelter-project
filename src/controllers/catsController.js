@@ -37,4 +37,12 @@ router.get('/:catId/catShelter', async (req, res) => {
     res.render('cats/catShelter', { cat });
 });
 
+router.post('/:catId/catShelter', async (req, res) => {
+    const catId = req.params.catId;
+
+    await catService.delById(catId) ;
+
+    res.redirect('/');
+});
+
 export default router;

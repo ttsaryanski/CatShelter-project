@@ -27,7 +27,15 @@ async function create(catData) {
     return saveDb(db);
 };
 
+async function del(catData) {
+    const db = await getDb();
+    db.cats = catData;
+
+    return saveDb(db);
+}
+
 export default {
     getAll,
-    create
+    create,
+    del
 };

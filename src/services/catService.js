@@ -19,6 +19,14 @@ const getById = async (catId) => {
     return result;
 };
 
+const delById = async (catId) => {
+    const cats = await catData.getAll();
+    const result = cats.filter(cat => cat.id != catId);
+    console.log(result);
+
+    return catData.del(result);
+};
+
 const getBreed = async () => {
     const breeds = await breedData.getAll();
 
@@ -34,6 +42,7 @@ const createBreed = (breed) => {
 export default {
     getAll,
     getById,
+    delById,
     getBreed,
     createBreed
 };
