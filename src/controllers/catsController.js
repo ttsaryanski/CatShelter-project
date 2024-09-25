@@ -9,6 +9,12 @@ router.get('/add-cat', async (req, res) => {
     res.render('cats/addCat', { breeds });
 });
 
+router.get('/add-caturl', async (req, res) => {
+    const breeds = await catService.getBreed();
+
+    res.render('cats/addCatURL', { breeds });
+});
+
 router.get('/add-breed', (req, res) => {
     res.render('cats/addBreed');
 });

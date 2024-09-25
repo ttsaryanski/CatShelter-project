@@ -40,7 +40,8 @@ html, body {
 }
 
 .navigation li:nth-child(4) a::before {
-    content: "\f2f6";
+    content: "\f1b0";
+    /* content: "\f2f6"; */
 }
 
 .navigation li:nth-child(5) a::before {
