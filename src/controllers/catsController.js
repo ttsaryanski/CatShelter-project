@@ -9,10 +9,18 @@ router.get('/add-cat', async (req, res) => {
     res.render('cats/addCat', { breeds });
 });
 
-router.get('/add-caturl', async (req, res) => {
+router.get('/add-cat/url', async (req, res) => {
     const breeds = await catService.getBreed();
 
     res.render('cats/addCatURL', { breeds });
+});
+
+router.post('/add-cat/url', async (req, res) => {
+    const catData = req.body;
+
+    await catService.create(catData);
+
+    res.redirect('/');
 });
 
 router.get('/add-breed', (req, res) => {
