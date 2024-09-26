@@ -1,11 +1,23 @@
-<form method="POST" class="cat-form" enctype="multipart/form-data">
-    <h2>Add Cat from Local Disk</h2>
+{{#if isUpload}}
+    <form method="POST" class="cat-form" enctype="multipart/form-data">
+{{else}}
+    {{>urlFormType}}
+{{/if}}
+    {{#if isUpload}}
+        <h2>Add Cat from Local Disk</h2>
+    {{else}}
+        {{>urlFormTitle}}
+    {{/if}}
     <label for="name">Name</label>
     <input name="name" type="text" id="name">
     <label for="description">Description</label>
     <textarea name="description" id="description"></textarea>
-    <label for="image">Image</label>
-    <input name="upload" type="file" id="image">
+    {{#if isUpload}}
+        <label for="image">Image</label>
+        <input name="imgUrl" type="file" id="image">
+    {{else}}
+        {{>urlFormInput}}
+    {{/if}}
     <label for="group">Breed</label>
     <select name="breed" id="group">
         {{#each breeds}}

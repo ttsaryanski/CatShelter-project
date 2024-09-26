@@ -6,13 +6,13 @@ const router = Router();
 router.get('/add-cat', async (req, res) => {
     const breeds = await catService.getBreed();
 
-    res.render('cats/addCat', { breeds });
+    res.render('cats/addCat', { breeds, isUpload: true });
 });
 
 router.get('/add-cat/url', async (req, res) => {
     const breeds = await catService.getBreed();
 
-    res.render('cats/addCatURL', { breeds });
+    res.render('cats/addCat', { breeds });
 });
 
 router.post('/add-cat/url', async (req, res) => {

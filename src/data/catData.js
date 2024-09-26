@@ -1,5 +1,8 @@
 import fs from 'fs/promises';
 import path from 'path';
+import mongoose from 'mongoose';
+
+await mongoose.connect('mongodb://localhost:27017/catShelter');
 
 const dbPath = path.resolve('./src/db.json');
 
