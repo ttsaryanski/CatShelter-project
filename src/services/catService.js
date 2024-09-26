@@ -1,6 +1,5 @@
 import breedData from "../data/breedData.js";
 import catsData from "../data/catData.js";
-import uniqid from 'uniqid';
 
 const getAll = async (query = {}) => {
     let cats = await catsData.getAll();
@@ -13,24 +12,17 @@ const getAll = async (query = {}) => {
 };
 
 const create = (catData) => {
-    catData.id = uniqid();
-
     return catsData.create(catData);
 };
 
 const getById = async (catId) => {
-    const cats = await catsData.getAll();
-    const result = cats.find(cat => cat.id == catId);
+    const cat = await catsData.getById(catId);
 
-    return result;
+    return cat;
 };
 
 const delById = async (catId) => {
-    const cats = await catsData.getAll();
-    const result = cats.filter(cat => cat.id != catId);
-    console.log(result);
-
-    return catsData.del(result);
+    return catsData.del(catId);
 };
 
 const getBreed = async () => {
@@ -40,8 +32,6 @@ const getBreed = async () => {
 }
 
 const createBreed = (breed) => {
-    breed.id = uniqid();
-
     return breedData.create(breed);
 }
 
