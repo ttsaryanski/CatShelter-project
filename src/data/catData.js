@@ -1,4 +1,4 @@
-import Cat from "../models/Cats.js";
+import Cat from "../models/Cat.js";
 
 async function getAll() {
     const cats = await Cat.find().lean();

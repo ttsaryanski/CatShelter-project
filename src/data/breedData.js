@@ -1,4 +1,4 @@
-import Breed from '../models/Breeds.js';
+import Breed from '../models/Breed.js';
 
 async function getAll() {
     const breeds = await Breed.find().lean();
