@@ -1,8 +1,10 @@
-import breedData from "../data/breedData.js";
-import catsData from "../data/catData.js";
+import Breeds from "../models/Breeds.js";
+
+import Cats from "../models/Cats.js";
 
 const getAll = async (query = {}) => {
-    let cats = await catsData.getAll();
+    //let cats = await catsData.getAll();
+    const cats = await Cats.find().lean();
 
     if (query.search) {
         cats = cats.filter(cat => cat.breed.toLowerCase().startsWith(query.search.toLowerCase()));
@@ -11,28 +13,27 @@ const getAll = async (query = {}) => {
     return cats;
 };
 
-const create = (catData) => {
-    return catsData.create(catData);
-};
+const create = (catData) => Cats.create(catData);
+
 
 const getById = async (catId) => {
-    const cat = await catsData.getById(catId);
+    const cat = await Cats.findById(catId).lean();
 
     return cat;
 };
 
 const delById = async (catId) => {
-    return catsData.del(catId);
+    return await Cats.findByIdAndDelete(catId);
 };
 
 const getBreed = async () => {
-    const breeds = await breedData.getAll();
+    const breeds = await Breeds.find().lean();
 
     return breeds;
 }
 
-const createBreed = (breed) => {
-    return breedData.create(breed);
+const createBreed = async (breed) => {
+    return await Breeds.create(breed);
 }
 
 export default {
