@@ -17,6 +17,8 @@ const create = (catData) => Cats.create(catData);
 
 const getById = (catId) => Cats.findById(catId);
 
+const editById = (catId, catData) => Cats.findByIdAndUpdate(catId, catData);
+
 const delById = (catId) => Cats.findByIdAndDelete(catId);
 
 const getBreed = () => {
@@ -31,6 +33,7 @@ export default {
     getAll,
     create,
     getById,
+    editById,
     delById,
     getBreed,
     createBreed

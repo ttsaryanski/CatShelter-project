@@ -5,7 +5,11 @@ const catSchema = new Schema({
     imageUrl: String,
     breed: String,
     description: String,
-    price: Number
+    price: Number,
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 const Cats = model('Cats', catSchema);

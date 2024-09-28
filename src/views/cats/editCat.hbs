@@ -1,18 +1,25 @@
-<form action="#" method="" class="cat-form" enctype="multipart/form-data">
+{{#if isUpload}}
+    <form method="POST" class="cat-form" enctype="multipart/form-data">
+{{else}}
+    {{>editFormType}}
+{{/if}}
     <h2>Edit Cat</h2>
     <label for="name">Name</label>
-    <input type="text" id="name" value={{cat.name}}>
+    <input name="name" type="text" id="name" value={{cat.name}}>
     <label for="description">Description</label>
-    <textarea
-        id="description">{{cat.description}}</textarea>
-    <label for="image">Image</label>
-    <input type="file" id="image">
+    <textarea name="description" id="description">{{cat.description}}</textarea>
+    {{#if isUpload}}
+        <label for="image">Image</label>
+        <input name="imageUrl" type="file" id="image">
+        {{else}}
+            {{>editFormInput}}
+        {{/if}}
     <label for="group">Breed</label>
-    <select id="group">
+    <select name="breed" id="group">
         <option value={{cat.breed}}>{{cat.breed}}</option>
         {{#each breeds}}
             {{>breed}}
         {{/each}}
     </select>
-    <button>Edit Cat</button>
+    <button type="submit">Edit Cat</button>
 </form>

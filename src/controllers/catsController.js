@@ -3,17 +3,6 @@ import catService from "../services/catService.js";
 
 const router = Router();
 
-router.get('/search', async (req, res) => {
-    const query = req.query;
-    const cats = await catService.getAll(query).lean();
-
-    res.render('home', {
-        isHome: true,
-        query,
-        cats
-    });
-});
-
 router.get('/add-cat', async (req, res) => {
     const breeds = await catService.getBreed().sort({ breed: "ascending" }).lean();
 
@@ -51,7 +40,16 @@ router.get('/:catId/editCat', async (req, res) => {
     const catId = req.params.catId;
     const cat = await catService.getById(catId).lean();
 
-    res.render('cats/editCat', { cat, breeds });
+    res.render('cats/editCat', { cat, breeds, isUpload: false });
+});
+
+router.post('/:catId/editCat', async (req, res) => {
+    const catId = req.params.catId;
+    const catData = req.body;
+    
+    await catService.editById(catId, catData);
+
+    res.redirect('/');
 });
 
 router.get('/:catId/catShelter', async (req, res) => {
