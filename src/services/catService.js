@@ -2,12 +2,11 @@ import Breeds from "../models/Breeds.js";
 
 import Cats from "../models/Cats.js";
 
-const getAll = async (query = {}) => {
-    //let cats = await catsData.getAll();
-    const cats = await Cats.find().lean();
+const getAll = (query = {}) => {
+    let cats = Cats.find();
 
     if (query.search) {
-        cats = cats.filter(cat => cat.breed.toLowerCase().startsWith(query.search.toLowerCase()));
+        cats.find({ breed: { $regex: query.search, $options: 'i'} });
     };
 
     return cats;
@@ -16,25 +15,17 @@ const getAll = async (query = {}) => {
 const create = (catData) => Cats.create(catData);
 
 
-const getById = async (catId) => {
-    const cat = await Cats.findById(catId).lean();
+const getById = (catId) => Cats.findById(catId);
 
-    return cat;
-};
+const delById = (catId) => Cats.findByIdAndDelete(catId);
 
-const delById = async (catId) => {
-    return await Cats.findByIdAndDelete(catId);
-};
-
-const getBreed = async () => {
-    const breeds = await Breeds.find().lean();
+const getBreed = () => {
+    const breeds = Breeds.find();
 
     return breeds;
 }
 
-const createBreed = async (breed) => {
-    return await Breeds.create(breed);
-}
+const createBreed = (breed) => Breeds.create(breed);
 
 export default {
     getAll,
