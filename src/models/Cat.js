@@ -12,6 +12,6 @@ const catSchema = new Schema({
     }
 });
 
-const Cats = model('Cats', catSchema);
+const Cat = model('Cat', catSchema);
 
-export default Cats;
+export default Cat;

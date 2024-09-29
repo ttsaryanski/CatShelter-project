@@ -1,9 +1,9 @@
-import Breeds from "../models/Breeds.js";
+import Breed from "../models/Breed.js";
 
-import Cats from "../models/Cats.js";
+import Cat from "../models/Cat.js";
 
 const getAll = (query = {}) => {
-    let cats = Cats.find();
+    let cats = Cat.find();
 
     if (query.search) {
         cats.find({ breed: { $regex: query.search, $options: 'i'} });
@@ -12,22 +12,22 @@ const getAll = (query = {}) => {
     return cats;
 };
 
-const create = (catData) => Cats.create(catData);
+const create = (catData) => Cat.create(catData);
 
 
-const getById = (catId) => Cats.findById(catId);
+const getById = (catId) => Cat.findById(catId);
 
-const editById = (catId, catData) => Cats.findByIdAndUpdate(catId, catData);
+const editById = (catId, catData) => Cat.findByIdAndUpdate(catId, catData);
 
-const delById = (catId) => Cats.findByIdAndDelete(catId);
+const delById = (catId) => Cat.findByIdAndDelete(catId);
 
 const getBreed = () => {
-    const breeds = Breeds.find();
+    const breeds = Breed.find();
 
     return breeds;
 }
 
-const createBreed = (breed) => Breeds.create(breed);
+const createBreed = (breed) => Breed.create(breed);
 
 export default {
     getAll,

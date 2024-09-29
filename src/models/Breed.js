@@ -4,6 +4,6 @@ const breedSchema = new Schema({
     breed: String
 });
 
-const Breeds = model('Breeds', breedSchema);
+const Breed = model('Breed', breedSchema);
 
-export default Breeds;
+export default Breed;
