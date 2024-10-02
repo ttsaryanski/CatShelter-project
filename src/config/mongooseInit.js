@@ -1,10 +1,11 @@
 import { connect } from 'mongoose';
 
-const dbUrl = 'mongodb+srv://SoftUniUser:SoftUniBackEndSeptember2024@softuni.a3ekn.mongodb.net/';
+const LocalDB_URL = 'mongodb://localhost:27017/';
+const CloudDB_URL = 'mongodb+srv://SoftUniUser:SoftUniBackEndSeptember2024@softuni.a3ekn.mongodb.net/';
 
 export default async function mongooseInit() {
     try {
-        await connect(dbUrl, { dbName: 'catShelter' });
+        await connect(CloudDB_URL, { dbName: 'catShelter' });
     
         console.log('Successfully connect to DB!');
         
