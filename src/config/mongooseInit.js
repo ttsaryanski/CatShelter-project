@@ -1,6 +1,6 @@
 import { connect } from 'mongoose';
 
-const dbUrl = 'mongodb://localhost:27017';
+const dbUrl = 'mongodb+srv://SoftUniUser:SoftUniBackEndSeptember2024@softuni.a3ekn.mongodb.net/';
 
 export default async function mongooseInit() {
     try {
